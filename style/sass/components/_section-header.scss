@@ -1,0 +1,23 @@
+.section-title {
+  padding: 15px;
+  color: white;
+  user-select: none;
+  width: fit-content;
+  margin: 0 auto 50px;
+  backdrop-filter: saturate(180%) blur(20px);
+  // Flex
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid black {
+    radius: 15px;
+  }
+  font: {
+    size: 30px;
+    family: $Gugi;
+  }
+
+  img {
+    width: 40px;
+  }
+}

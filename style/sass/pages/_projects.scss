@@ -1,0 +1,40 @@
+.projects {
+  @extend %section;
+  background: {
+    color: #000000;
+    size: cover;
+    attachment: fixed;
+    image: url("../images/projects-bg.svg");
+  }
+
+  .content {
+    .switcher {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      padding: 3px;
+      margin: 0 auto 50px;
+      border-radius: 30px;
+      background-color: white;
+      @include media(mobile) {
+        flex-direction: column;
+      }
+
+      li {
+        padding: 15px;
+        cursor: pointer;
+        border-radius: inherit;
+        transition: background-color 0.3s;
+        @include media(mobile) {
+          width: 100%;
+          text-align: center;
+        }
+        &.active {
+          background-color: $mats-colors-red;
+        }
+      }
+    }
+    // .gallery {
+    // }
+  }
+}

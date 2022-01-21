@@ -1,0 +1,92 @@
+.skills-tools {
+  @extend %section;
+  background: {
+    color: #aa3333;
+    size: 100%;
+    position: center;
+    attachment: fixed;
+    image: url("../images/skills-bg.svg");
+  }
+  transition: background-size 1s;
+
+  .container {
+    overflow: hidden;
+    padding-bottom: 20px;
+    min-height: 60vh;
+
+    > .toolbox {
+      $size: 120px;
+
+      margin-top: 50px;
+      // Grid
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax($size, 1fr));
+
+      > .card {
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 5px 5px 20px rgba(black, 0.5);
+        &.active {
+          // > .icon {
+          //   img {
+          //   }
+          //   .name {
+          //   }
+          // }
+          > .details {
+            bottom: -20px;
+          }
+        }
+
+        > .icon {
+          @include center(flex);
+          flex-direction: column;
+          gap: 10px;
+
+          img {
+            width: 75%;
+            height: 75%;
+          }
+          .name {
+            margin: 0;
+            color: white;
+            white-space: nowrap;
+            font: {
+              size: 16px;
+              weight: 500;
+            }
+          }
+        }
+        // Deatils Of Each Skill || Tool
+        > .details {
+          position: absolute;
+          bottom: -100%;
+          left: 15px;
+          width: calc(100% - 15px);
+          height: calc(100% - 100px);
+          background-color: white;
+          border-radius: 15px 15px 0 0;
+          transition: bottom $duration;
+          padding: 15px;
+
+          .name {
+            font: {
+              family: "Gugi", cursive;
+              size: 40px;
+            }
+          }
+          // .desc {
+          // }
+          .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 25px;
+            color: #009688;
+          }
+        }
+      }
+    }
+  }
+}

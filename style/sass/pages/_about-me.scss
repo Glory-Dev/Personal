@@ -1,0 +1,258 @@
+.about {
+  @extend %section;
+  background-color: #222;
+
+  .container {
+    > .content {
+      // Card
+      > .card {
+        width: 350px;
+        perspective: 600px;
+        border-radius: 15px;
+        // For The Rotation of the card
+        &:hover {
+          > .box {
+            transform: rotateY(-180deg);
+          }
+        }
+
+        > .box {
+          width: 100%;
+          height: 500px;
+          position: relative;
+          transition: transform 0.5s;
+          transform-style: preserve-3d;
+          // Background Animation
+          &::before {
+            $position: -5px;
+
+            content: "";
+            position: absolute;
+            top: $position;
+            right: $position;
+            left: $position;
+            bottom: $position;
+            filter: blur(20px);
+            backface-visibility: hidden;
+            animation: landing-card 4s linear infinite;
+            @keyframes landing-card {
+              0% {
+                background: #ff005e;
+              }
+              25% {
+                background: #010615;
+              }
+              75% {
+                background: #fbff00;
+              }
+              100% {
+                background: #ff005e;
+              }
+            }
+          }
+
+          > .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            overflow: hidden;
+            border-radius: 15px;
+            backface-visibility: hidden;
+            background-color: #18191c;
+            // Flex
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            &.front {
+              > header {
+                width: 100%;
+                height: 150px;
+                position: relative;
+                background: url("../images/card-header.gif") no-repeat {
+                  size: cover;
+                }
+
+                > img {
+                  $size: 80px;
+
+                  position: absolute;
+                  bottom: -40px;
+                  left: 20px;
+                  width: $size;
+                  height: $size;
+                  padding: 5px;
+                  border-radius: 50%;
+                  background: {
+                    color: #18191c;
+                    size: cover;
+                  }
+                }
+              }
+              > article {
+                padding: 15px;
+                text-align: center;
+
+                h4 {
+                  margin: 0;
+                  font: {
+                    size: 24px;
+                    family: "Major Mono Display", monospace;
+                  }
+
+                  span {
+                    display: block;
+                    margin-top: 5px;
+                    font: {
+                      size: 16px;
+                      family: "Ropa Sans", sans-serif;
+                    }
+                  }
+                }
+                p {
+                  font-size: 15px;
+                  padding: 0 10px;
+                  line-height: 1.7;
+                  margin-top: 20px;
+                }
+              }
+              > .lang {
+                gap: 5px;
+                margin-bottom: 15px;
+
+                > li {
+                  width: 50px;
+                  height: 50px;
+                  &:last-child {
+                    margin: -3px 0 0 3px;
+                  }
+                }
+              }
+              > p.auto-rot {
+                margin: 0 30px;
+                padding: 15px 0;
+                text-align: center;
+                border-top: 1px solid #555;
+
+                i {
+                  padding-right: 5px;
+                }
+              }
+            }
+            &.back {
+              padding: 15px 0;
+              transform: rotateY(180deg);
+
+              > h4 {
+                padding: 15px;
+                text-align: center;
+                margin: 0 30px 20px;
+                border-bottom: 1px solid #555;
+                font: {
+                  size: 24px;
+                  family: "Righteous", cursive;
+                }
+              }
+              > .skills {
+                height: 60%;
+                padding: 15px;
+                margin: 0 auto;
+                // Grid
+                display: grid;
+                gap: 20px 40px;
+                grid-template: {
+                  columns: repeat(2, 1fr);
+                  rows: repeat(2, 1fr);
+                }
+
+                li {
+                  width: 100px;
+                  height: 100px;
+                  position: relative;
+                  border-radius: 50%;
+                  background-color: #18191c;
+                  &:hover::after {
+                    opacity: 1;
+                    visibility: visible;
+                  }
+                  &:hover {
+                    > img {
+                      opacity: 0;
+                      visibility: hidden;
+                    }
+                  }
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    top: -10px;
+                    left: -10px;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    border: 10px solid #2196f3 {
+                      top-color: #eee;
+                    }
+                    transform: rotate(-44deg);
+                  }
+                  &::after {
+                    content: attr(data-level);
+                    position: absolute;
+                    font-size: 25px;
+                    transition: 0.5s;
+                    opacity: 0;
+                    visibility: hidden;
+                  }
+
+                  > img {
+                    width: 50px;
+                    height: 50px;
+                    transition: 0.5s;
+                  }
+                }
+              }
+              > .social {
+                padding: 20px;
+
+                li {
+                  &:not(:first-child) {
+                    margin-left: 10px;
+                  }
+                  &:hover {
+                    a {
+                      background-color: white;
+
+                      i {
+                        &[class*="discord"] {
+                          color: $discord;
+                        }
+                        &[class*="facebook"] {
+                          color: $facebook;
+                        }
+                        &[class*="youtube"] {
+                          color: $youtube;
+                        }
+                      }
+                    }
+                  }
+                  a {
+                    padding: 10px;
+                    border-radius: 15px;
+                    transition: background-color 0.3s;
+                    background-color: rgba(white, 0.7);
+
+                    i {
+                      color: #222;
+                      font-size: 40px;
+                      transition: color 0.3s;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
